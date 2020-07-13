@@ -17,7 +17,8 @@ class FitnessUrlResource extends JsonResource
         return [
             'fitness_url_id' => $this->id,
             'url_name'       => $this->url_name,
-            'url_address'    => $this->url_address
+            'url_address'    => $this->url_address,
+            'gender'         => $this->gender
         ];
     }
 }

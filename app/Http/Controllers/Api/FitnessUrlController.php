@@ -31,16 +31,18 @@ class FitnessUrlController extends Controller
     public function store(Request $request)
     {
        
-        //  $request->validate([
-        //     'url_name' => 'required',
-        //     'url_address' =>'required'
-        // ]);
+         $request->validate([
+            'url_name'    => 'required',
+            'url_address' =>'required',
+            'gender'      =>'required'  
+        ]);
 
  
  
        FitnessUrl::create([
             'url_name'      => request('url_name'),
-            'url_address'  => request('url_address')
+            'url_address'  => request('url_address'),
+            'gender'       => request('gender') 
 
         ]);
         return response()->json([
@@ -57,8 +59,11 @@ class FitnessUrlController extends Controller
      */
     public function show($id)
     {
+
+
         $fitness_url = FitnessUrl::find($id);
-        $fitness_url = FitnessUrl::make($fitness_url);
+
+        $fitness_url = FitnessUrlResource::make($fitness_url);
         return response()->json([
             'fitness_url' => $fitness_url
         ],200);
@@ -73,17 +78,38 @@ class FitnessUrlController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      
+             $request->validate([
+            'url_name' => 'required',
+            'url_address' =>'required'
+        ]);
+         
+        $fitness_url = FitnessUrl::find($id);
+        $fitness_url->url_name = request('url_name');
+        $fitness_url->url_address = request('url_address');
+        $fitness_url->gender = request('gender');
+        $fitness_url->save();
+
+        return response()->json([
+            'message' => "Update Successful"
+        ]);
+
+ 
+      
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove  the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $fitness_url = FitnessUrl::find($id);
+        $fitness_url->delete();
+        return response()->json([
+            'message' => "Delete Successful"
+        ]);
     }
 }

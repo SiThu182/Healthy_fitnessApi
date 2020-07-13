@@ -17,6 +17,7 @@ class CreateFitnessUrlsTable extends Migration
             $table->id();
             $table->string('url_name');
             $table->string('url_address');
+            $table->string('gender','30');
             $table->timestamps();
         });
     }
