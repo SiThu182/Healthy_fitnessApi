@@ -31,9 +31,9 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-       
+        
           $request->validate([
-            'food_name'    => 'required|min:3|max:30',
+            'food_name'    => 'required|min:3|max:30|unique:food_name',
             'calories'  => 'required|min:1|max:30',
             'category'  => 'required'
             // 'food_image'=> 'required' 
