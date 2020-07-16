@@ -42,7 +42,7 @@ class CaloriesController extends Controller
      public function getBmrResult($value='')
     {
         $bmrs = Bmr::all();
-        $bmrs = BmrResource::collection($waterintakes);
+        $bmrs = BmrResource::collection($bmrs);
         return response()->json([
                     'bmrs' => $bmrs
                 ],200);
