@@ -71,7 +71,7 @@ class CaloriesController extends Controller
     public function getWaterIntake($value='')
     {
         $waterintakes = WaterIntake::all();
-        $waterintakes = WaterIntake::collection($waterintakes);
+        $waterintakes = WaterIntakeResource::collection($waterintakes);
         return response()->json([
                     'waterintakes' => $waterintakes
                 ],200);
