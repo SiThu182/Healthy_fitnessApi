@@ -157,7 +157,7 @@ class FoodController extends Controller
      
         if($searchval!='')
         {
-            $foods = Food::where('foods.food_name','like','%'.$searchval.'%','and','foods.permission','=','1')->get();
+            $foods = Food::where('food.food_name','like','%'.$searchval.'%','and','foods.permission','=','1')->get();
             if ( count($foods) > 0) {
                 return response()->json(['foods' => $foods]);
             }else{
