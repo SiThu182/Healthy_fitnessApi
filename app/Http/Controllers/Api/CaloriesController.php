@@ -39,7 +39,7 @@ class CaloriesController extends Controller
 
     }
 
-     public function getBmr($value='')
+     public function getBmrResult($value='')
     {
         $waterintakes = WaterIntake::all();
         $waterintakes = WaterIntake::collection($waterintakes);
