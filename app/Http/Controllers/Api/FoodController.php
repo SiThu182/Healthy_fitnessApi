@@ -149,4 +149,24 @@ class FoodController extends Controller
         ],200);            
     }
 
+
+    public function searchByName(Request $request ){
+     $searchval = request('search_name');
+        
+        $food = Food::all();
+     
+        if($searchval!='')
+        {
+            $foods = Food::where('foods.food_name','like','%'.$searchval.'%','and','foods.permission','=','1')->get();
+            if ( count($foods) > 0) {
+                return response()->json(['foods' => $foods]);
+            }else{
+                return response()->json(['foods' => "nothing"]);
+            }
+
+        }
+        
+       
+    } 
+
 }

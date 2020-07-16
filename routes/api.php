@@ -30,5 +30,6 @@ Route::get('/getbmr','Api\CaloriesController@getBmrResult');
 Route::post('/setwaterIntake','Api\CaloriesController@storeWaterIntake');
 Route::get('/getwaterIntake','Api\CaloriesController@getwaterIntake');
 Route::get('/filterByCategory','Api\FoodController@filterbyCategory');
+Route::get('/searchByName','Api\FoodController@searchByName');
 
  Route::apiResource('/fitnessUrl','Api\FitnessUrlController');
