@@ -9,7 +9,7 @@ use App\Http\Resources\BmiResource;
 use App\Bmr;
 use App\Http\Resources\BmrResource;
 use App\WaterIntake;
-use App\Http\Resources\WaterIntakeResource;
+use App\Http\Resources\WaterInTakeResource;
 class CaloriesController extends Controller
 {
     public function getBmiResult($value='')
@@ -51,7 +51,7 @@ class CaloriesController extends Controller
     public function storeBmr(Request $request)
     {
          
-        WaterIntake::create([
+        Bmr::create([
             'user_id' => 1,
             'weight'  => request('weight'),
             'height'  => request('height'),
