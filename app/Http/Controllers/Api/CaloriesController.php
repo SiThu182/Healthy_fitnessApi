@@ -39,6 +39,35 @@ class CaloriesController extends Controller
 
     }
 
+     public function getBmr($value='')
+    {
+        $waterintakes = WaterIntake::all();
+        $waterintakes = WaterIntake::collection($waterintakes);
+        return response()->json([
+                    'waterintakes' => $waterintakes
+                ],200);
+    }
+
+    public function storeBmr(Request $request)
+    {
+         
+        WaterIntake::create([
+            'user_id' => 1,
+            'weight'  => request('weight'),
+            'height'  => request('height'),
+            'result'  => request('result'),
+            'age'     => request('age'),
+            'gender'  => request('gender'),
+            'date' => request('date'),
+                     
+        ]);
+
+        return response([
+            'message' => "Bmr added"
+        ],200);
+
+    }
+
     public function getWaterIntake($value='')
     {
         $waterintakes = WaterIntake::all();
